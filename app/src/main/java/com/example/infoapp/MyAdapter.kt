@@ -1,6 +1,7 @@
 package com.example.infoapp
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,12 +63,29 @@ class MyAdapter(val arrayList: ArrayList<Model>, val context:Context):
                     Toast.LENGTH_LONG
                 ).show()
             }
-            if (position == 0) {
+            if (position == 4) {
                 Toast.makeText(
                     context, "You Clicked on Feedback",
                     Toast.LENGTH_LONG
                 ).show()
             }
+
+            val model = arrayList.get(position)
+
+            var aTitle: String = model.title
+
+            var aDescription: String = model.des
+
+            var aImageView: Int = model.image
+
+            val intent = Intent(context, FullDisplayActivity::class.java)
+
+            intent.putExtra("iTitle", aTitle)
+            intent.putExtra("iDescription", aDescription)
+            intent.putExtra("iImageView", aImageView)
+
+            context.startActivity(intent)
+
         }
     }
 
